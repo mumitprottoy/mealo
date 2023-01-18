@@ -1,0 +1,22 @@
+{% extends 'entrance/entrance_base.html' %}
+
+{% block content %}
+    
+    <form class="entrance-form" method='POST'>
+        <div class="form-input-container">
+            <h2>Login to continue.</h2>
+            {{ err_msg | safe }}
+            {% csrf_token %}
+            <input type="text" placeholder="username or email" name="username" value="{{username}}" required>
+            <input type="password" placeholder="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+            <br><br>
+            <a href="http://">Forgot Password.</a>
+        </div>
+    </form>
+    <br>
+    <div style="text-align: center;">
+    <span>Doesn't have an account? <a href="http://">Signup.</a></span>
+    </div>
+{% endblock %}

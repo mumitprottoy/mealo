@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>MealO | {{title}}</title>
+    {% else %}
+    <title>MealO</title>
+    {% endif %}
+    <link rel="shortcut icon" href="https://images.theyellowtherapist.com/meal/meal-ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/02c6faad26.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            font-family: 'Trebuchet MS';
+        }
+        header, main, footer {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .links {
+            margin-right: 1em;
+            display: inline;
+        }
+
+        .logo {
+            width: 150px;
+        }
+
+        input {
+            border: none;
+            border: 1px solid rgba(0,0,0,0.3);
+            padding: 1em;
+            display: block;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button {
+            background-color: transparent;
+            padding: 0.5em 2em;
+            border: 2px solid black;
+            color: black;
+            font-size: 120%;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white;
+        }
+
+        a {
+            color: rgba(0,0,0,0.6);
+        }
+
+        .entrance-form {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            text-align: center;
+        }
+
+        .form-input-container {
+            padding: 2em; 
+            text-align: center; 
+            border: 1px solid rgba(0,0,0,0.1); 
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        footer {
+            color: rgba(0,0,0,0.3); 
+            text-align: center; 
+            margin-top: 2em;
+        }
+        @media only screen and (max-width:720px) {
+            .logo {
+                width: 120px;
+            }
+            header, main, footer {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/"><img src="https://images.theyellowtherapist.com/meal/meal-logo.png" class="logo"></a>
+        <br>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="links">logout</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="links">login</a>
+        <a href="{% url 'signup' %}" class="links">signup</a>
+        {% endif %}
+    </header>
+    
+    <br><br>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <br><br>
+
+    <footer><span>Copyright <span class="fa fa-copyright"></span> 2023 <a href="/">MealO</a>. All rights reserved.</span>  </footer>
+</body>
+</html>
