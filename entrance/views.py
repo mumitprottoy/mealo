@@ -22,18 +22,6 @@ def login(request):
     context = {
         'title': 'Login',
     }
-    
-    if request.method=='POST':
-        user, pwd = getUser(request.POST['username']), request.POST['password'] 
-        if not bool(user):
-            context['err_msg']=bool_message(msg='Username or email does not exist.', type=False)
-        elif not bool(authenticate(username=user.username, password=pwd)):
-            context['username']=str(user.username)
-            context['err_msg']=bool_message(msg='Wrong password.', type=False)
-        else:
-            enter(request, user)
-            return redirect('landing')
-
     return render(request, htm, context)
 
 
